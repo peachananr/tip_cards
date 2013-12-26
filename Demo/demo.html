@@ -1,0 +1,525 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery Tip Cards by Pete R. | The Pete Design</title>
+	<meta name="title" content="jQuery Tip Cards by Pete R. | The Pete Design" />
+	<meta name="description" content="Create an animated card layout that let your viewer flip through it like you see on Google Tips" />
+	<link rel="image_src" href="/images/tip_cards_image.png" />
+
+	<meta content="http://www.thepetedesign.com/demos/tip_cards_demo.html" property="og:url" />
+	<meta content="http://www.thepetedesign.com/images/tip_cards_image.png" property="og:image" />
+	<link rel="shortcut icon" id="favicon" href="favicon.png"> 
+	<meta name="author" content="Pete R.">
+	<link rel="canonical" href="http://www.thepetedesign.com/demos/tip_cards_demo.html" />
+	<link href='http://fonts.googleapis.com/css?family=OpenSans:100,300,400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<link href='tip_cards.css' rel='stylesheet' type='text/css'>
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="jquery.tip_cards.js"></script>
+  <style>
+    html {
+      height: 100%;
+    }
+    body {
+      background: #E5E8ED;
+      padding: 0;
+      text-align: center;
+      font-family: 'Open Sans';
+      position: relative;
+      margin: 0;
+      height: 100%;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizelegibility;
+    }
+    
+    a {
+      color: black;
+    }
+    
+    .header {
+      padding: 30px 0 0;
+      float: left;
+      width: 100%;
+      background: white;
+    }
+    
+    .wrapper {
+    	height: auto !important;
+    	height: 100%;
+    	margin: 0 auto; 
+    	overflow: hidden;
+    }
+    
+    a {
+      text-decoration: none;
+    }
+    
+    
+    h1, h2 {
+      width: 100%;
+      float: left;
+    }
+    h1 {
+      margin-top: 100px;
+      color: #999;
+      margin-bottom: 5px;
+      font-size: 70px;
+      font-weight: 100;
+    }
+    h2 {
+      padding: 00px 20px 30px 20px;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      letter-spacing: 0px;
+      color: #888;
+      font-size: 20px;
+      line-height: 160%;
+      font-weight: 100;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+    
+    
+    .pointer {
+      color: #00B0FF;
+      font-family: 'Pacifico';
+      font-size: 24px;
+      margin-top: 15px;
+      position: absolute;
+      top: 130px;
+      right: -40px;
+    }
+    .pointer2 {
+      color: #00B0FF;
+      font-family: 'Pacifico';
+      font-size: 24px;
+      margin-top: 15px;
+      position: absolute;
+      top: 130px;
+      left: -40px;
+    }
+    pre {
+      margin: 80px auto;
+    }
+    pre code {
+      padding: 35px;
+      border-radius: 5px;
+      font-size: 15px;
+      background: rgba(0,0,0,0.1);
+      border: rgba(0,0,0,0.05) 5px solid;
+      max-width: 500px;
+    }
+
+
+    .main {
+      float: left;
+      width: 100%;
+      margin: 0 auto;
+    }
+    
+    
+    .main h1 {
+      padding:20px 50px 10px;
+      float: left;
+      width: 100%;
+      font-size: 60px;
+      box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      font-weight: 100;
+      margin: 0;
+      padding-top: 25px;
+      font-family: 'Open Sans';
+      letter-spacing: -1px;
+      text-transform: capitalize;
+    }
+   
+    .main h1.demo1 {
+      background: #1ABC9C;
+    }
+    
+    .reload.bell {
+      font-size: 12px;
+      padding: 20px;
+      width: 45px;
+      text-align: center;
+      height: 47px;
+      border-radius: 50px;
+      -webkit-border-radius: 50px;
+      -moz-border-radius: 50px;
+    }
+    
+    .reload.bell #notification {
+      font-size: 25px;
+      line-height: 140%;
+    }
+    
+    .reload, .btn{
+      display: inline-block;
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      display: inline-block;
+      line-height: 100%;
+      padding: 0.7em;
+      text-decoration: none;
+      width: 100px;
+      line-height: 140%;
+      font-size: 17px;
+      font-family: Open Sans;
+      font-weight: bold;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      background-color: #4D90FE;
+      background-image: -webkit-linear-gradient(top,#4D90FE,#4787ED);
+      background-image: linear-gradient(top,#4d90fe,#4787ed);
+      border: 1px solid #3079ED;
+      color: #FFF;
+    }
+    .reload:hover{
+      background: #317af2;
+    }
+    .btn {
+      width: 200px;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      background-color: #4D90FE;
+      background-image: -webkit-linear-gradient(top,#4D90FE,#4787ED);
+      background-image: linear-gradient(top,#4d90fe,#4787ed);
+      border: 1px solid #3079ED;
+      color: #FFF;
+    }
+    .clear {
+      width: auto;
+    }
+    .btn:hover, .btn:hover {
+      background: #317af2;
+    }
+    .btns {
+      width: 410px;
+      margin: 50px auto;
+    }
+    .credit {
+      text-align: center;
+      color: #888;
+      padding: 10px 10px;
+      margin: 0 0 0 0;
+      background: #f5f5f5;
+      float: left;
+      width: 100%;
+    }
+    .credit a {
+      text-decoration: none;
+      font-weight: bold;
+      color: black;
+    }
+    
+    .back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-align: center;
+      display: block;
+      padding: 7px;
+      width: 100%;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      background:#f5f5f5;
+      font-weight: bold;
+      font-size: 13px;
+      color: #888;
+      -webkit-transition: all 200ms ease-out;
+      -moz-transition: all 200ms ease-out;
+      -o-transition: all 200ms ease-out;
+      transition: all 200ms ease-out;
+    }
+    .back:hover {
+      background: #eee;
+    }
+  
+    
+    .page-container {
+      max-width: 1010px;
+      margin: auto;
+      position: relative;
+    }
+    
+    .page-container p{
+      font-size: 21px;
+      font-weight: 100;
+      line-height: 180%;
+    }
+    
+    .page-container h3 {
+      font-family: "noto serif";
+      font-size: 23px;
+    }
+
+    .tip {
+      display: none;
+    }
+
+    .tc_modal {
+      width: 890px;
+    }
+    
+    .tc_body .tc_card .tc_inner_card .tc_click_target {
+      font-size: 1.25em;
+      color: #888;
+      line-height: 25px;
+      font-weight: 300;
+      text-align: left;
+      padding: 30px 30px 30px 30px;
+    }
+    
+    .tc_card:nth-child(1n+1) .tc_inner_card  {
+      border-bottom: 3px solid #1345ED;
+    }
+    
+    .tc_card:nth-child(2n+2) .tc_inner_card  {
+      border-bottom: 3px solid #03A010;
+    }
+    
+    .tc_card:nth-child(3n+3) .tc_inner_card  {
+      border-bottom: 3px solid #F8B00F;
+    }
+    
+    .tc_card:nth-child(4n+4) .tc_inner_card {
+      border-bottom: 3px solid #DD4330;
+    }
+    
+    
+    .tc_back p {
+      font-family: Open Sans, sans-serif;
+      font-weight: 300;
+      padding: 50px 20px 20px;
+      margin: 0 0 10px 0;
+      color: #8A8C93;
+      color: #777;
+      letter-spacing: -1.2px;
+      font-size: 3.5625em;
+      line-height: 72px;
+      text-align: left;
+    }
+    .tc_inner_modal .tc_front {
+      min-height: 300px;
+    }
+    
+    .tc_inner_modal .tc_front h1 {
+      margin-top: 20px;
+      font-size: 32px;
+      text-align: left;
+      margin-bottom: 35px;
+    }
+    
+    .tc_inner_modal .tc_front p {
+      text-align: left;
+      min-height: 70px;
+      font-size: 24px;
+      line-height: 180%;
+    }
+    .tc_next, .tc_prev {
+      line-height: 90%;
+    }
+    .tc_inner_modal {
+      margin: 40px;
+    }
+    
+	</style>
+	<script>
+	  $(document).ready( function() {
+	    $(document).ready( function() {
+  	    $(".tips").tip_cards();
+  	  });
+	  });
+		
+	</script>
+</head>
+<body>
+  <div class="wrapper">
+	  <div class="main">
+	    <div class="header">
+        <h1>jQuery Tip Cards</h1>
+        <h2>Create a card layout that let your user flip through<br>it like you see on <a href="https://www.google.com/get/googletips/">Google Tips</a></h2>
+        
+        <div class="btns">
+  	      <a class="reload btn" href="https://github.com/peachananr/tip_cards">Download on Github</a>
+  	    </div>
+  	    <p class="credit">Created by <a href="http://www.thepetedesign.com">Pete R.</a>, Founder of <a href="http://www.bucketlistly.com" target="_blank">BucketListly</a></p>
+  	  </div>
+  	  
+      <div class="page-container">
+        <ul class="tips">
+          <li>
+            <div class="tc_front">
+            	<a href="#tip1">Tip 1: See What videos your friends are posting and adjust friendships accordingly.</a>
+            </div>
+            <div class="tc_back"></div>
+
+            <div id="tip1" class="tip">
+              <div class="tc_front">
+                <h1>1. See What videos your friends are posting</h1>
+                <p>Whether you're browsing youtube.com or its mobile app, when you're signed in with your Google Account, you can see videos recommended for you.</p>
+              </div>
+              <div class="tc_back">
+                <p>Tip 1: See What videos your friends are posting and adjust friendships accordingly.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="tc_front">
+            	<a href="#tip2">Tip 2: See What videos your friends are posting and adjust friendships accordingly.</a>
+            </div>
+            <div class="tc_back"></div>
+
+            <div id="tip2" class="tip">
+              <div class="tc_front">
+                <h1>2. See What videos your friends are posting</h1>
+                <p>Whether you're browsing youtube.com or its mobile app, when you're signed in with your Google Account, you can see videos recommended for you.</p>
+              </div>
+              <div class="tc_back">
+                <p>Tip 2: See What videos your friends are posting and adjust friendships accordingly.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="tc_front">
+            	<a href="#tip3">Tip 3: See What videos your friends are posting and adjust friendships accordingly.</a>
+            </div>
+            <div class="tc_back"></div>
+
+            <div id="tip3" class="tip">
+              <div class="tc_front">
+                <h1>3. See What videos your friends are posting</h1>
+                <p>Whether you're browsing youtube.com or its mobile app, when you're signed in with your Google Account, you can see videos recommended for you.</p>
+              </div>
+              <div class="tc_back">
+                <p>Tip 3: See What videos your friends are posting and adjust friendships accordingly.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="tc_front">
+            	<a href="#tip4">Tip 4: See What videos your friends are posting and adjust friendships accordingly.</a>
+            </div>
+            <div class="tc_back"></div>
+
+            <div id="tip4" class="tip">
+              <div class="tc_front">
+                <h1>4. See What videos your friends are posting</h1>
+                <p>Whether you're browsing youtube.com or its mobile app, when you're signed in with your Google Account, you can see videos recommended for you.</p>
+              </div>
+              <div class="tc_back">
+                <p>Tip 4: See What videos your friends are posting and adjust friendships accordingly.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="tc_front">
+            	<a href="#tip5">Tip 5: See What videos your friends are posting and adjust friendships accordingly.</a>
+            </div>
+            <div class="tc_back"></div>
+
+            <div id="tip5" class="tip">
+              <div class="tc_front">
+                <h1>5. See What videos your friends are posting</h1>
+                <p>Whether you're browsing youtube.com or its mobile app, when you're signed in with your Google Account, you can see videos recommended for you.</p>
+              </div>
+              <div class="tc_back">
+                <p>Tip 5: See What videos your friends are posting and adjust friendships accordingly.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="tc_front">
+            	<a href="#tip6">Tip 6: See What videos your friends are posting and adjust friendships accordingly.</a>
+            </div>
+            <div class="tc_back"></div>
+
+            <div id="tip6" class="tip">
+              <div class="tc_front">
+                <h1>6. See What videos your friends are posting</h1>
+                <p>Whether you're browsing youtube.com or its mobile app, when you're signed in with your Google Account, you can see videos recommended for you.</p>
+              </div>
+              <div class="tc_back">
+                <p>Tip 6: See What videos your friends are posting and adjust friendships accordingly.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="tc_front">
+            	<a href="#tip7">Tip 7: See What videos your friends are posting and adjust friendships accordingly.</a>
+            </div>
+            <div class="tc_back"></div>
+
+            <div id="tip7" class="tip">
+              <div class="tc_front">
+                <h1>7. See What videos your friends are posting</h1>
+                <p>Whether you're browsing youtube.com or its mobile app, when you're signed in with your Google Account, you can see videos recommended for you.</p>
+              </div>
+              <div class="tc_back">
+                <p>Tip 7: See What videos your friends are posting and adjust friendships accordingly.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="tc_front">
+            	<a href="#tip8">Tip 8: See What videos your friends are posting and adjust friendships accordingly.</a>
+            </div>
+            <div class="tc_back"></div>
+
+            <div id="tip8" class="tip">
+              <div class="tc_front">
+                <h1>8. See What videos your friends are posting</h1>
+                <p>Whether you're browsing youtube.com or its mobile app, when you're signed in with your Google Account, you can see videos recommended for you.</p>
+              </div>
+              <div class="tc_back">
+                <p>Tip 8: See What videos your friends are posting and adjust friendships accordingly.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="tc_front">
+            	<a href="#tip9">Tip 9: See What videos your friends are posting and adjust friendships accordingly.</a>
+            </div>
+            <div class="tc_back"></div>
+
+            <div id="tip9" class="tip">
+              <div class="tc_front">
+                <h1>9. See What videos your friends are posting</h1>
+                <p>Whether you're browsing youtube.com or its mobile app, when you're signed in with your Google Account, you can see videos recommended for you.</p>
+              </div>
+              <div class="tc_back">
+                <p>Tip 9: See What videos your friends are posting and adjust friendships accordingly.</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="tc_front">
+            	<a href="#tip10">Tip 10: See What videos your friends are posting and adjust friendships accordingly.</a>
+            </div>
+            <div class="tc_back"></div>
+
+            <div id="tip10" class="tip">
+              <div class="tc_front">
+                <h1>10. See What videos your friends are posting</h1>
+                <p>Whether you're browsing youtube.com or its mobile app, when you're signed in with your Google Account, you can see videos recommended for you.</p>
+              </div>
+              <div class="tc_back">
+                <p>Tip 10: See What videos your friends are posting and adjust friendships accordingly.</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <a class="back" href="http://www.thepetedesign.com/#design">Back to The Pete Design</a>
+    <a href="https://github.com/peachananr/tip_cards"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 15;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+  </div>
+</body>
+</html>
