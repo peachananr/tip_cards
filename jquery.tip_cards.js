@@ -207,6 +207,7 @@
             resetNav();
           });
         }
+        return false;
       });
       
       $(".tc_prev").click(function() {
@@ -225,9 +226,8 @@
               el3.removeClass("animated");
             });
           }, 100);
-          
-          return false;
         }
+        return false;
       });
       
       
