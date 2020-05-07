@@ -3,10 +3,9 @@ Create an animated card layout that let your viewer flip through it like you see
 
 Created by [Pete R.](http://www.thepetedesign.com), Founder of [BucketListly](http://www.bucketlistly.com)
 
-[![Google Tip Cards](http://www.thepetedesign.com/images/tip_cards_image3.png "Google Tip Cards")](http://www.thepetedesign.com/demos/tip_cards_demo.html)
 
 ## Demo
-[View demo](http://www.thepetedesign.com/demos/tip_cards_demo.html)
+[View demo](http://peachananr.github.io/tip_cards/Demo/demo.html)
 
 ## Compatibility
 Modern browsers such as Chrome, Firefox, and Safari on  desktop have been tested. I have not tested this on IE.
