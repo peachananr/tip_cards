@@ -281,6 +281,7 @@ body .tc_back {
 .tc_next {
   right: -24px;
   text-indent: -16px;
+  font-align: center;
 }
 
 .tc_prev {
